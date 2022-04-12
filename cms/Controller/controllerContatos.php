@@ -1,23 +1,13 @@
 <?php
 
-    /**************************************************************************
-     * Objetivo: Arquivo responsavel pelas manipulações de dados de contatos
-     *      OBS(Este fará a ponte entre a View e é Model) 
-     * Autor: Rodrigo
-     * Data: 04/03/2022
-     * Versão: 1.0 
-     **************************************************************************/
-
-     // função para realizar a exclusão de um contato 
      function excluirContato($id)
      {
-        // Validação para verificar se contem um numero valido
+
         if($id != 0 &&  !empty($id) && is_numeric($id))
-        {
-            // Importe do arquivo de contato
+        {   
+
             require_once("model/bd/contato.php");
 
-            // Chama a função da model e valida se o retorno foi verdadeiro ou falso
             if(deleteContato($id))
             {
                 return true;
@@ -32,14 +22,12 @@
                          'message' => "Não é possivel excluir o registro sem informar um id valido.");
         }
      }
-
-      // função para rsolicitar os dados da model e encaminhar a lista
-      // de contatos para View 
+     
+     
       function listarContato()
       {
         require_once("model/bd/contato.php");
 
-        // chama a função que vai buscar os dados no BD
         $dados = selectAllContato();
 
         if(!empty($dados))

@@ -13,6 +13,7 @@
         // essa linha executa o script no BD e garda o retorno dos dados 
         $result = mysqli_query($conexao, $sql);
         //valida se o BD retornou registros
+        
         if($result)
         {
             //mysqli_fetch_assoc() - permite converter os dados do BD
@@ -33,11 +34,15 @@
             
             // solicita o fechamento da conexão com o BD
             fecharConexaoMysql($conexao);
-
-            return $arrayDados;
+            if(empty($arrayDados)){
+                return false;
+            }else{
+                return $arrayDados;
+            }
+             
         }
-
     }
+
 
     // função para realizar o delete no BD
     function deleteContato($id)
